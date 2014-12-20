@@ -212,4 +212,11 @@ WIP on branchname: short-sha commit-message"
         (insert new-c)
         (replace-string new-c old-c nil (1+ start) end)))))
 
+(defun toggle-fullscreen-mac ()
+  "Toggle full screen"
+  (interactive)
+  (set-frame-parameter
+   nil 'fullscreen
+   (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
+
 (provide 'my-functions)
