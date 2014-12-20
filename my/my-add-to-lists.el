@@ -7,4 +7,5 @@
 (add-to-list 'auto-mode-alist '(".stumpwmrc'" . stumpwm-mode))
 (add-to-list 'auto-mode-alist '(".hamlbars'" . haml-mode))
 (add-to-list 'auto-mode-alist '(".hamlc'" . haml-mode))
+(add-to-list 'auto-mode-alist '(".jsx" . jsx-mode))
 (provide 'my-add-to-lists)
