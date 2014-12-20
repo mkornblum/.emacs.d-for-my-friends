@@ -1,3 +1,3 @@
-(require 'zenburn-theme)
+(require 'solarized-dark-theme)
 
 (provide 'my-theme)
