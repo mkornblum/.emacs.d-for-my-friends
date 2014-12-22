@@ -25,6 +25,7 @@
  '(crosshairs-overlay-priority 100)
  '(css-indent-level 2)
  '(css-indent-offset 2)
+ '(jsx-indent-level 2)
  '(custom-safe-themes
    (quote
     ("9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "cfe99939ab2423c01d34c97f6ae40e1db965564a7acb17731eb049a2e5e76392" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
