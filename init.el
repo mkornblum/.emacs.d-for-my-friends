@@ -12,6 +12,7 @@
    highline
    dired
    dired-efap
+   flycheck
    stumpwm-mode
    misc
    simp
