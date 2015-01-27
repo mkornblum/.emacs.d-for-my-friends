@@ -37,13 +37,14 @@
    (auto-indent-mode)
    (linum-mode)
    (rvm-activate-corresponding-ruby)
-   (flymake-ruby-load)))
+   (flycheck-mode)))
 
 (add-hook
  'js-mode-hook
  (lambda ()
    (auto-indent-mode)
-   (linum-mode)))
+   (linum-mode)
+   (flycheck-mode)))
 
 (add-hook
  'coffee-mode-hook
@@ -53,7 +54,8 @@
 (add-hook
  'sass-mode-hook
  (lambda ()
-   (smart-indent-rigidly-mode)))
+   (smart-indent-rigidly-mode)
+   (flycheck-mode)))
 
 (add-hook
  'haml-mode-hook
