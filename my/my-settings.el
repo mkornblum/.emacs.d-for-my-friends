@@ -18,6 +18,12 @@
 (setq-default kill-read-only-ok t
               indent-tabs-mode nil)
 
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-jshint json-jsonlist)))
+
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 ;; allows files to be opened like:
 ;; /sudo:root@host:
