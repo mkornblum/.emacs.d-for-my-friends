@@ -219,4 +219,10 @@ WIP on branchname: short-sha commit-message"
    nil 'fullscreen
    (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 
+(defun set-node-modules-path ()
+  "Adds node_modules to the end of exec-path, so emacs
+   can use commands found in local node_modules/.bin"
+  (let ((node-path (concat (simp-project-root) "/node_modules/.bin")))
+    (setq-local exec-path (add-to-list 'exec-path node-path))))
+
 (provide 'my-functions)
