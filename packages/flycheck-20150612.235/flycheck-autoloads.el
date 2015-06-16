@@ -6,7 +6,7 @@
 ;;;### (autoloads (flycheck-def-option-var flycheck-def-config-file-var
 ;;;;;;  flycheck-define-command-checker flycheck-define-error-level
 ;;;;;;  global-flycheck-mode flycheck-mode flycheck-info) "flycheck"
-;;;;;;  "flycheck.el" (21817 54694 0 0))
+;;;;;;  "flycheck.el" (21887 24425 0 0))
 ;;; Generated autoloads from flycheck.el
 
 (autoload 'flycheck-info "flycheck" "\
@@ -212,8 +212,8 @@ Use this together with the `option', `option-list' and
 
 ;;;***
 
-;;;### (autoloads nil nil ("flycheck-ert.el" "flycheck-pkg.el") (21817
-;;;;;;  54694 395014 0))
+;;;### (autoloads nil nil ("flycheck-ert.el" "flycheck-pkg.el") (21887
+;;;;;;  24425 65981 0))
 
 ;;;***
 
