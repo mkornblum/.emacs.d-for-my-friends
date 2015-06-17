@@ -38,6 +38,7 @@
  '(eshell-cmpl-cycle-completions t)
  '(eshell-cmpl-cycle-cutoff-length 10)
  '(eshell-cmpl-expand-before-complete t)
+ '(flycheck-eslintrc ".eslintrc")
  '(fringe-mode (quote (1 . 1)) nil (fringe))
  '(global-auto-complete-mode t)
  '(global-auto-revert-mode t)
