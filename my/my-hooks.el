@@ -48,6 +48,14 @@
    (flycheck-mode)))
 
 (add-hook
+ 'js-mode-hook
+ (lambda ()
+   (auto-indent-mode)
+   (linum-mode)
+   (set-node-modules-path)
+   (flycheck-mode)))
+
+(add-hook
  'coffee-mode-hook
  (lambda ()
    (smart-indent-rigidly-mode)))
