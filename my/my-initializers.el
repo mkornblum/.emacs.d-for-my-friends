@@ -9,4 +9,5 @@
 (highline-mode 1)
 (auto-compression-mode 1)
 (powerline-default-theme)
+(setq magit-last-seen-setup-instructions "1.4.0")
 (provide 'my-initializers)
