@@ -18,6 +18,7 @@
 
 (global-set-key (kbd "M-l") 'next-in-frame-window)
 (global-set-key (kbd "M-h") 'previous-in-frame-window)
+(global-set-key (kbd "M-k") 'previous-in-frame-window)
 (global-set-key (kbd "M-o") 'indent-and-open-newline)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-z") 'zap-up-to-char)

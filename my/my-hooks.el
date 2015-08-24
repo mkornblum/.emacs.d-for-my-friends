@@ -112,6 +112,7 @@
  (lambda ()
    (auto-indent-mode)
    (linum-mode)
+   (auto-complete-mode)
    (set-node-modules-path)
    (flycheck-mode)))
 
