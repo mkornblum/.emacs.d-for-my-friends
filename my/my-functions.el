@@ -225,4 +225,15 @@ WIP on branchname: short-sha commit-message"
   (let ((node-path (concat (simp-project-root) "/node_modules/.bin")))
     (setq-local exec-path (add-to-list 'exec-path node-path))))
 
+(defun eslint-set-closest-executable (&optional dir)
+  (interactive)
+  (let* ((dir (or dir default-directory))
+         (eslint-executable (concat dir "/node_modules/.bin/eslint")))
+    (if (file-exists-p eslint-executable)
+        (progn
+          (make-variable-buffer-local 'flycheck-javascript-eslint-executable)
+          (setq flycheck-javascript-eslint-executable eslint-executable))
+      (if (string= dir "/") nil
+        (eslint-set-closest-executable (expand-file-name ".." dir))))))
+
 (provide 'my-functions)

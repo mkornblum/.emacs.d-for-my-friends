@@ -13,6 +13,7 @@
       column-number-mode t
       ido-max-directory-size 100000
       magit-completing-read 'ido-completing-read
+      magit-refresh-status-buffer nil
       font-lock-maximum-decoration t)
 
 (setq-default kill-read-only-ok t

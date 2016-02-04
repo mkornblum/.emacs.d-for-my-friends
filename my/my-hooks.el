@@ -44,7 +44,7 @@
  (lambda ()
    (auto-indent-mode)
    (linum-mode)
-   (set-node-modules-path)
+   (eslint-set-closest-executable)
    (flycheck-mode)))
 
 (add-hook
@@ -54,6 +54,15 @@
    (linum-mode)
    (set-node-modules-path)
    (flycheck-mode)))
+
+(add-hook
+ 'js2-mode-hook
+ (lambda ()
+   (auto-indent-mode)
+   (linum-mode)
+   (local-unset-key (kbd "M-j"))
+   (eslint-set-closest-executable)
+   (flycheck-mode 1)))
 
 (add-hook
  'coffee-mode-hook
@@ -113,6 +122,7 @@
    (auto-indent-mode)
    (linum-mode)
    (auto-complete-mode)
+   (eslint-set-closest-executable)
    (set-node-modules-path)
    (flycheck-mode)))
 
