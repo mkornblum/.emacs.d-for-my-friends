@@ -13,7 +13,6 @@
    dired
    dired-efap
    flycheck
-   stumpwm-mode
    misc
    simp
    move-dup

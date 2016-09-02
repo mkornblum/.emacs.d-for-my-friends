@@ -35,8 +35,6 @@
  '(electric-pair-mode nil)
  '(electric-pair-skip-self nil)
  '(elscreen-display-tab nil)
- '(emms-playlist-default-major-mode (quote emms-playlist-mode))
- '(emms-source-file-default-directory "~/music/")
  '(emux-completing-read-command (quote ido-completing-read))
  '(emux-term-program "/bin/zsh")
  '(eshell-cd-shows-directory nil)

@@ -18,8 +18,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook 'auto-make-directory)
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-(add-hook 'emms-player-started-hook 'emms-show)
-
 (add-hook
  'magit-status-mode-hook
  (lambda ()
@@ -97,14 +95,6 @@
  (lambda ()
    (linum-mode)
    (paredit-mode +1)))
-
-(add-hook
- 'lisp-mode-hook
- (lambda ()
-   (linum-mode)
-   (paredit-mode +1)
-   (if (string-match "stumpwmrc$" buffer-file-name)
-       (stumpwm-mode))))
 
 (add-hook
  'lisp-interaction-mode-hook
