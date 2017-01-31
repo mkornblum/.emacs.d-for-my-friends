@@ -119,6 +119,7 @@
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 2)
  '(org-return-follows-link t)
+ '(package-selected-packages (quote (simp flycheck magit rjsx-mode)))
  '(package-user-dir "~/.emacs.d/packages")
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)

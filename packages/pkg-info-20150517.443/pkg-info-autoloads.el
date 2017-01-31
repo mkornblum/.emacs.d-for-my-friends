@@ -3,10 +3,7 @@
 ;;; Code:
 
 
-;;;### (autoloads (pkg-info-version-info pkg-info-package-version
-;;;;;;  pkg-info-defining-library-version pkg-info-defining-library-original-version
-;;;;;;  pkg-info-library-version pkg-info-library-original-version)
-;;;;;;  "pkg-info" "pkg-info.el" (22018 61210 0 0))
+;;;### (autoloads nil "pkg-info" "pkg-info.el" (22671 58963 0 0))
 ;;; Generated autoloads from pkg-info.el
 
 (autoload 'pkg-info-library-original-version "pkg-info" "\
