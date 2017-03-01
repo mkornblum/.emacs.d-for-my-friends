@@ -18,6 +18,7 @@
    highline
    dired
    dired-efap
+   exec-path-from-shell
    flycheck
    misc
    simp

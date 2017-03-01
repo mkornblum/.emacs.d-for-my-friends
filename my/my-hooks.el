@@ -42,7 +42,7 @@
  (lambda ()
    (auto-indent-mode)
    (linum-mode)
-   (eslint-set-closest-executable)
+   (add-node-modules-path)
    (flycheck-mode)))
 
 (add-hook
@@ -50,7 +50,7 @@
  (lambda ()
    (auto-indent-mode)
    (linum-mode)
-   (set-node-modules-path)
+   (add-node-modules-path)
    (flycheck-mode)))
 
 (add-hook
@@ -59,7 +59,7 @@
    (auto-indent-mode)
    (linum-mode)
    (local-unset-key (kbd "M-j"))
-   (eslint-set-closest-executable)
+   (add-node-modules-path)
    (flycheck-mode 1)))
 
 (add-hook
@@ -112,8 +112,7 @@
    (auto-indent-mode)
    (linum-mode)
    (auto-complete-mode)
-   (eslint-set-closest-executable)
-   (set-node-modules-path)
+   (add-node-modules-path)
    (flycheck-mode)))
 
 
