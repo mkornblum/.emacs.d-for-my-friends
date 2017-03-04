@@ -10,6 +10,7 @@
 (auto-compression-mode 1)
 (powerline-default-theme)
 (setq magit-last-seen-setup-instructions "1.4.0")
+(setq flycheck-javascript-eslint-executable "eslint_d")
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 (provide 'my-initializers)

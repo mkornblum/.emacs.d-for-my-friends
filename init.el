@@ -18,6 +18,7 @@
    highline
    dired
    dired-efap
+   eslintd-fix
    exec-path-from-shell
    flycheck
    misc

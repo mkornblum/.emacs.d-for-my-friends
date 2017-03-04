@@ -60,6 +60,7 @@
    (linum-mode)
    (local-unset-key (kbd "M-j"))
    (add-node-modules-path)
+   (eslintd-fix-mode)
    (flycheck-mode 1)))
 
 (add-hook
