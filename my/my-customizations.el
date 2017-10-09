@@ -105,7 +105,7 @@
  '(magit-default-tracking-name-function (quote magit-tracking-name-unfucked-with))
  '(magit-fetch-arguments (quote ("--prune")))
  '(magit-last-seen-setup-instructions "1.4.0" t)
- '(magit-refresh-status-buffer nil)
+ '(magit-refresh-status-buffer nil t)
  '(magit-revert-buffers 1 t)
  '(magit-save-repository-buffers nil)
  '(magit-save-some-buffers nil)
@@ -122,7 +122,7 @@
  '(org-return-follows-link t)
  '(package-selected-packages
    (quote
-    (lua-mode elm-mode add-node-modules-path exec-path-from-shell paredit expand-region dired-efap isearch-symbol-at-point itail move-dup multiple-cursors visible-mark auto-complete auto-indent-mode coffee-mode color-theme connection crontab-mode css-mode git-timemachine haml-mode highlight highline ido-completing-read+ ido-ubiquitous jade-mode js2-mode powerline sass-mode slime smart-indent-rigidly smex solarized-theme wgrep simp flycheck magit rjsx-mode)))
+    (lua-mode elm-mode add-node-modules-path exec-path-from-shell paredit expand-region dired-efap isearch-symbol-at-point itail move-dup multiple-cursors visible-mark auto-complete auto-indent-mode coffee-mode color-theme connection crontab-mode css-mode git-timemachine haml-mode highlight highline ido-completing-read+ jade-mode powerline sass-mode slime smart-indent-rigidly smex solarized-theme wgrep simp flycheck magit rjsx-mode)))
  '(package-user-dir "~/.emacs.d/packages")
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)
@@ -142,7 +142,7 @@
     (calc-mode dired-mode gnus-article-mode gnus-group-mode gnus-summary-mode ibuffer-mode magit-branch-manager-mode magit-commit-mode magit-diff-mode magit-key-mode magit-log-mode magit-reflog-mode magit-stash-mode magit-status-mode magit-wazzup-mode minibuffer-inactive-mode monky-mode sr-mode term-mode)))
  '(tab-width 2)
  '(term-buffer-maximum-size 100000)
- '(term-default-fg-color "#FFFFFF")
+ '(term-default-fg-color "#839496")
  '(term-unbind-key-list (quote ("C-z" "C-x" "C-c" "C-h" "C-l" "<ESC>")))
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(transient-mark-mode t)
