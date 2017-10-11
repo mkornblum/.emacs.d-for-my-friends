@@ -29,4 +29,4 @@
            :has (init.el)
            :ignore (.git))))
 
-(provide 'my-project-defenitions)
+(provide 'my-project-definitions)

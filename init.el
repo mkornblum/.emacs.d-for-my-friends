@@ -38,7 +38,7 @@
    my-package
    my-autoloads
    my-add-to-lists
-   my-project-defenitions
+   my-project-definitions
    my-functions
    my-keybindings
    my-hooks
