@@ -122,7 +122,7 @@
  '(org-return-follows-link t)
  '(package-selected-packages
    (quote
-    (lua-mode elm-mode add-node-modules-path exec-path-from-shell paredit expand-region dired-efap isearch-symbol-at-point itail move-dup multiple-cursors visible-mark auto-complete auto-indent-mode coffee-mode color-theme connection crontab-mode css-mode git-timemachine haml-mode highlight highline ido-completing-read+ jade-mode powerline sass-mode slime smart-indent-rigidly smex solarized-theme wgrep simp flycheck magit rjsx-mode)))
+    (emojify company tide org lua-mode elm-mode add-node-modules-path exec-path-from-shell paredit expand-region dired-efap isearch-symbol-at-point itail move-dup multiple-cursors visible-mark auto-complete auto-indent-mode coffee-mode color-theme connection crontab-mode css-mode git-timemachine haml-mode highlight highline ido-completing-read+ jade-mode powerline sass-mode slime smart-indent-rigidly smex solarized-theme wgrep simp flycheck magit rjsx-mode)))
  '(package-user-dir "~/.emacs.d/packages")
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)
@@ -146,6 +146,7 @@
  '(term-unbind-key-list (quote ("C-z" "C-x" "C-c" "C-h" "C-l" "<ESC>")))
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(transient-mark-mode t)
+ '(typescript-indent-level 2)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(vc-handled-backends (quote (RCS CVS SVN SCCS Bzr Hg Mtn Arch)))
  '(visible-mark-inhibit-trailing-overlay t)
@@ -162,4 +163,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "nil" :family "Inconsolata")))))
+ '(default ((t (:inherit nil :stipple nil :background "#002b36" :foreground "#839496" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "nil" :family "Inconsolata"))))
+ '(org-level-1 ((t (:inherit variable-pitch :foreground "#cb4b16" :height 1.3)))))

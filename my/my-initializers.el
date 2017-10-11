@@ -13,4 +13,8 @@
 (setq flycheck-javascript-eslint-executable "eslint_d")
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
 (provide 'my-initializers)

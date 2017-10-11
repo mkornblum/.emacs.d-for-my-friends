@@ -16,7 +16,12 @@
 (hook-unless 'find-file-hook buffer-read-only (delete-trailing-whitespace))
 (hook-unless 'before-save-hook (major-mode-match-p "makefile") (untabify-all))
 (hook-unless 'before-save-hook (major-mode-match-p "markdown") (delete-trailing-whitespace))
-(add-hook 'before-save-hook 'auto-make-directory)
+(add-hook
+ 'before-save-hook
+ (lambda ()
+   (auto-make-directory)
+   (tide-format-before-save)
+   ))
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 (add-hook
  'magit-status-mode-hook
@@ -116,5 +121,22 @@
    (add-node-modules-path)
    (flycheck-mode)))
 
+(add-hook
+ 'typescript-mode-hook
+ 'setup-tide-mode)
+
+(add-hook
+ 'rjsx-mode-hook
+ (lambda ()
+   (auto-indent-mode)
+   (linum-mode)
+   (auto-complete-mode)
+   (add-node-modules-path)
+   (eslintd-fix-mode)
+   (flycheck-mode 1)
+   (when (string-equal "tsx" (file-name-extension buffer-file-name))
+     (setup-tide-mode))))
+
+(add-hook 'after-init-hook #'global-emojify-mode)
 
 (provide 'my-hooks)
