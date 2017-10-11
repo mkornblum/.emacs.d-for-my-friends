@@ -87,7 +87,6 @@
  '(itail-tail-flags "-n100 -f")
  '(js-indent-level 2)
  '(js2-auto-indent-p nil)
- '(js2-basic-offset 2)
  '(js2-bounce-indent-p t)
  '(js2-mirror-mode nil)
  '(js2-mode-show-strict-warnings nil)
@@ -122,7 +121,7 @@
  '(org-return-follows-link t)
  '(package-selected-packages
    (quote
-    (web-mode use-package emojify company tide org lua-mode elm-mode add-node-modules-path exec-path-from-shell paredit expand-region dired-efap isearch-symbol-at-point itail move-dup multiple-cursors visible-mark auto-complete auto-indent-mode coffee-mode color-theme connection crontab-mode css-mode git-timemachine haml-mode highlight highline ido-completing-read+ jade-mode powerline sass-mode slime smart-indent-rigidly smex solarized-theme wgrep simp flycheck magit rjsx-mode)))
+    (dired eslintd-fix web-mode use-package emojify company tide org lua-mode elm-mode add-node-modules-path exec-path-from-shell paredit expand-region dired-efap isearch-symbol-at-point itail move-dup multiple-cursors visible-mark auto-complete auto-indent-mode coffee-mode color-theme connection crontab-mode css-mode git-timemachine haml-mode highlight highline ido-completing-read+ jade-mode powerline sass-mode slime smart-indent-rigidly smex solarized-theme wgrep simp flycheck magit rjsx-mode)))
  '(package-user-dir "~/.emacs.d/packages")
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)

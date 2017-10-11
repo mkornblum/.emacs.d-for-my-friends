@@ -14,31 +14,65 @@
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-(use-package slime)
-(use-package smex)
-(use-package ido)
-(use-package ido-completing-read+)
-(use-package visible-mark)
-(use-package highline)
-(use-package dired)
-(use-package dired-efap)
-(use-package exec-path-from-shell)
-(use-package flycheck)
-(use-package simp)
-(use-package move-dup)
-(use-package expand-region)
-(use-package isearch-symbol-at-point)
-(use-package multiple-cursors)
-(use-package itail)
-(use-package powerline)
-(use-package smart-indent-rigidly)
-(use-package tide)
-(use-package rjsx-mode)
-(use-package web-mode)
+(use-package add-node-modules-path
+  :ensure t)
+(use-package auto-indent-mode
+  :ensure t)
+(use-package dired
+  :ensure t)
+(use-package dired-efap
+  :ensure t)
+(use-package elm-mode
+  :ensure t)
 (use-package emojify
+  :ensure t
   :config
   (global-emojify-mode))
-(use-package magit)
+(use-package exec-path-from-shell
+  :ensure t)
+(use-package expand-region
+  :ensure t)
+(use-package flycheck
+  :ensure t)
+(use-package highline
+  :ensure t)
+(use-package ido
+  :ensure t)
+(use-package ido-completing-read+
+  :ensure t)
+(use-package itail
+  :ensure t)
+(use-package isearch-symbol-at-point
+  :ensure t)
+(use-package lua-mode
+  :ensure t)
+(use-package magit
+  :ensure t)
+(use-package move-dup
+  :ensure t)
+(use-package multiple-cursors
+  :ensure t)
+(use-package powerline
+  :ensure t)
+(use-package rjsx-mode
+  :ensure t)
+(use-package simp
+  :ensure t)
+(use-package slime
+  :ensure t)
+(use-package solarized-theme
+  :ensure t)
+(use-package smart-indent-rigidly
+  :ensure t)
+(use-package smex
+  :ensure t)
+(use-package tide
+  :ensure t)
+(use-package visible-mark
+  :ensure t)
+(use-package web-mode
+  :ensure t)
+
 (use-package my-theme)
 (use-package my-isearch)
 (use-package my-backup)
