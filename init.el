@@ -1,46 +1,56 @@
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-;(package-initialize)
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")
+        ("melpa-stable" . "http://stable.melpa.org/packages/")
+        ("melpa" . "http://melpa.org/packages/")))
+
+(require 'package)
+(setq package-enable-at-startup nil)
+(package-initialize)
+
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-(mapc
- 'require
- '(slime
-   smex
-   auto-complete
-   ido
-   ido-completing-read+
-   visible-mark
-   highline
-   dired
-   dired-efap
-   exec-path-from-shell
-   flycheck
-   misc
-   simp
-   move-dup
-   expand-region
-   winner
-   midnight
-   isearch-symbol-at-point
-   multiple-cursors
-   itail
-   powerline
-   smart-indent-rigidly
-   my-theme
-   my-isearch
-   my-advice
-   my-backup
-   my-package
-   my-autoloads
-   my-add-to-lists
-   my-project-definitions
-   my-functions
-   my-keybindings
-   my-hooks
-   my-settings
-   my-initializers))
+(use-package slime)
+(use-package smex)
+(use-package auto-complete)
+(use-package ido)
+(use-package ido-completing-read+)
+(use-package visible-mark)
+(use-package highline)
+(use-package dired)
+(use-package dired-efap)
+(use-package exec-path-from-shell)
+(use-package flycheck)
+(use-package misc)
+(use-package simp)
+(use-package move-dup)
+(use-package expand-region)
+(use-package winner)
+(use-package midnight)
+(use-package isearch-symbol-at-point)
+(use-package multiple-cursors)
+(use-package itail)
+(use-package powerline)
+(use-package smart-indent-rigidly)
+(use-package tide)
+(use-package emojify
+  :config
+  (global-emojify-mode))
+(use-package magit)
+(use-package my-theme)
+(use-package my-isearch)
+(use-package my-backup)
+(use-package my-autoloads)
+(use-package my-add-to-lists)
+(use-package my-project-definitions)
+(use-package my-functions)
+(use-package my-initializers)
+(use-package my-keybindings)
+(use-package my-hooks)
+(use-package my-settings)
