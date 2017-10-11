@@ -1,7 +1,8 @@
 /packages/*
 /.mc-lists.el
 /url/cookies
-/elpa/archives/*
+/elpa/*
+/emojis/*
 /image-dired*
 /tramp
 /ac-comphist.dat
