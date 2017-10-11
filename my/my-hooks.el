@@ -123,7 +123,9 @@
 
 (add-hook
  'typescript-mode-hook
- 'setup-tide-mode)
+ (lambda ()
+   (flycheck-mode 1)
+   (setup-tide-mode)))
 
 (add-hook
  'rjsx-mode-hook
@@ -132,11 +134,7 @@
    (linum-mode)
    (auto-complete-mode)
    (add-node-modules-path)
-   (eslintd-fix-mode)
    (flycheck-mode 1)
-   (when (string-equal "tsx" (file-name-extension buffer-file-name))
-     (setup-tide-mode))))
-
-(add-hook 'after-init-hook #'global-emojify-mode)
+   (setup-tide-mode)))
 
 (provide 'my-hooks)

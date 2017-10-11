@@ -1,11 +1,9 @@
-(setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("org" . "http://orgmode.org/elpa/")
-        ("melpa-stable" . "http://stable.melpa.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")))
-
 (require 'package)
 (setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (package-initialize)
 
 ;; Bootstrap `use-package'
@@ -18,7 +16,6 @@
 
 (use-package slime)
 (use-package smex)
-(use-package auto-complete)
 (use-package ido)
 (use-package ido-completing-read+)
 (use-package visible-mark)
@@ -27,18 +24,17 @@
 (use-package dired-efap)
 (use-package exec-path-from-shell)
 (use-package flycheck)
-(use-package misc)
 (use-package simp)
 (use-package move-dup)
 (use-package expand-region)
-(use-package winner)
-(use-package midnight)
 (use-package isearch-symbol-at-point)
 (use-package multiple-cursors)
 (use-package itail)
 (use-package powerline)
 (use-package smart-indent-rigidly)
 (use-package tide)
+(use-package rjsx-mode)
+(use-package web-mode)
 (use-package emojify
   :config
   (global-emojify-mode))
