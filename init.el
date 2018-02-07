@@ -1,3 +1,8 @@
+(let ((default-directory "~/.emacs.d/"))
+  (normal-top-level-add-subdirs-to-load-path))
+(setq custom-file "~/.emacs.d/customizations.el")
+(load custom-file)
+
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -11,9 +16,6 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(let ((default-directory "~/.emacs.d/"))
-  (normal-top-level-add-subdirs-to-load-path))
-
 (use-package add-node-modules-path
   :ensure t)
 (use-package auto-complete
@@ -22,6 +24,22 @@
   :ensure t)
 (use-package company
   :ensure t)
+(use-package counsel
+  :ensure t
+  :bind*
+  (("M-x" . counsel-M-x)
+   ("C-s" . swiper)
+   ("C-x C-f" . counsel-find-file)
+   ("C-c d d" . counsel-descbinds)
+   ("C-c s s" . counsel-ag))
+  :config
+  (setq ivy-re-builders-alist
+	'((swiper . ivy--regex-plus)
+	  (t      . ivy--regex-fuzzy)))
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  (counsel-mode)
+  (ivy-mode 1))
 (use-package dired
   :ensure t)
 (use-package dired-efap
@@ -56,7 +74,7 @@
   :ensure t)
 (use-package magit
   :ensure t)
-(use-package move-dup
+(use-package movepp-dup
   :ensure t)
 (use-package multiple-cursors
   :ensure t)
@@ -73,7 +91,10 @@
 (use-package slime
   :ensure t)
 (use-package solarized-theme
-  :ensure t)
+  :ensure t
+  :init 
+  (load-theme 'solarized-dark t t)
+  (enable-theme 'solarized-dark))
 (use-package smart-indent-rigidly
   :ensure t)
 (use-package smex
@@ -85,14 +106,27 @@
 (use-package web-mode
   :ensure t)
 
-(use-package my-theme)
-(use-package my-isearch)
+;; (use-package my-theme)
+;; (use-package my-isearch)
 (use-package my-backup)
-(use-package my-autoloads)
-(use-package my-add-to-lists)
-(use-package my-project-definitions)
+;; (use-package my-autoloads)
+;; (use-package my-add-to-lists)
+;; (use-package my-project-definitions)
 (use-package my-functions)
-(use-package my-initializers)
+;; (use-package my-initializers)
 (use-package my-keybindings)
-(use-package my-hooks)
-(use-package my-settings)
+;; (use-package my-hooks)
+;; (use-package my-settings)
+
+(go-to-hell-bars)
+(exec-path-from-shell-initialize)
+
+(setq
+ backup-by-copying t      ; don't clobber symlinks
+ backup-directory-alist '((".*" . "~/.emacs.d/.backups"))    ; don't litter my fs tree
+ auto-save-file-name-transforms '((".*" "~/.emacs.d/.backups" t))
+ tramp-backup-directory-alist backup-directory-alist
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)       ; use versioned backups
