@@ -23,8 +23,9 @@
   (append flycheck-disabled-checkers
     '(javascript-jshint json-jsonlist)))
 
-(flycheck-add-mode 'typescript-tslint 'rjsx-mode)
-;; (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
+(flycheck-add-mode 'javascript-eslint 'rjsx-mode)
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+(flycheck-add-next-checker 'javascript-flow 'javascript-eslint)
 
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 ;; allows files to be opened like:

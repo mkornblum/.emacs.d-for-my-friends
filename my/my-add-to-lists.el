@@ -7,5 +7,5 @@
 (add-to-list 'auto-mode-alist '(".hamlbars'" . haml-mode))
 (add-to-list 'auto-mode-alist '(".hamlc'" . haml-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx\\'" . rjsx-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 (provide 'my-add-to-lists)

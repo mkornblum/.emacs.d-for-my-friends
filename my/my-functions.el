@@ -228,4 +228,29 @@ WIP on branchname: short-sha commit-message"
   (tide-hl-identifier-mode +1)
   (company-mode +1))
 
+(defun set-flow-executable ()
+  (interactive)
+  (let* ((os (pcase system-type
+               ('darwin "osx")
+               ('gnu/linux "linux64")
+               (_ nil)))
+         (root (locate-dominating-file  buffer-file-name  "node_modules/flow-bin"))
+         (executable (car (file-expand-wildcards
+                           (concat root "node_modules/flow-bin/*" os "*/flow")))))
+    (setq-local flow-minor-default-binary executable)
+    (setq-local company-flow-executable executable)
+    (setq-local flycheck-javascript-flow-executable executable)))
+
+(defun locate-npm-executable (name)
+  (let* ((node-module-path (concat "node_modules/.bin/" name))
+         (dir (locate-dominating-file buffer-file-name node-module-path)))
+    (if dir
+        (concat dir node-module-path)
+      (executable-find name))))
+
+(defun set-prettier-command ()
+  (interactive)
+  (when-let ((executable (locate-npm-executable "prettier")))
+             (setq-local prettier-js-command executable)))
+
 (provide 'my-functions)

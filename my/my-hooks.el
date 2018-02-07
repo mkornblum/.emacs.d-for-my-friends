@@ -48,6 +48,7 @@
    (auto-indent-mode)
    (linum-mode)
    (add-node-modules-path)
+   (eslintd-fix-mode)
    (flycheck-mode)))
 
 (add-hook
@@ -56,6 +57,7 @@
    (auto-indent-mode)
    (linum-mode)
    (add-node-modules-path)
+   (eslintd-fix-mode)
    (flycheck-mode)))
 
 (add-hook
@@ -119,12 +121,16 @@
    (linum-mode)
    (auto-complete-mode)
    (add-node-modules-path)
-   (flycheck-mode)))
+   (flycheck-mode 1)
+   (eslintd-fix-mode)
+   (when (string-equal "tsx" (file-name-extension buffer-file-name))
+     (setup-tide-mode))))
 
 (add-hook
  'typescript-mode-hook
  (lambda ()
    (flycheck-mode 1)
+   (prettier-js-mode)
    (setup-tide-mode)))
 
 (add-hook
@@ -135,6 +141,6 @@
    (auto-complete-mode)
    (add-node-modules-path)
    (flycheck-mode 1)
-   (setup-tide-mode)))
+   (eslintd-fix-mode)))
 
 (provide 'my-hooks)

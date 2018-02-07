@@ -42,6 +42,7 @@
  '(eshell-cmpl-cycle-cutoff-length 10)
  '(eshell-cmpl-expand-before-complete t)
  '(flycheck-eslintrc ".eslintrc")
+ '(flycheck-javascript-flow-args nil)
  '(fringe-mode (quote (1 . 1)) nil (fringe))
  '(global-auto-complete-mode t)
  '(global-auto-revert-mode t)
@@ -118,10 +119,11 @@
  '(ns-command-modifier (quote meta))
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 2)
+ '(org-agenda-files (quote ("~/code/tmobile-ucc/notes")))
  '(org-return-follows-link t)
  '(package-selected-packages
    (quote
-    (dired eslintd-fix web-mode use-package emojify company tide org lua-mode elm-mode add-node-modules-path exec-path-from-shell paredit expand-region dired-efap isearch-symbol-at-point itail move-dup multiple-cursors visible-mark auto-complete auto-indent-mode coffee-mode color-theme connection crontab-mode css-mode git-timemachine haml-mode highlight highline ido-completing-read+ jade-mode powerline sass-mode slime smart-indent-rigidly smex solarized-theme wgrep simp flycheck magit rjsx-mode)))
+    (flycheck-flow markdown-mode prettier-js auto-complete-mode dired eslintd-fix web-mode use-package emojify company tide org lua-mode elm-mode add-node-modules-path exec-path-from-shell paredit expand-region dired-efap isearch-symbol-at-point itail move-dup multiple-cursors visible-mark auto-complete auto-indent-mode coffee-mode color-theme connection crontab-mode css-mode git-timemachine haml-mode highlight highline ido-completing-read+ jade-mode powerline sass-mode slime smart-indent-rigidly smex solarized-theme wgrep simp flycheck magit rjsx-mode)))
  '(package-user-dir "~/.emacs.d/packages")
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)

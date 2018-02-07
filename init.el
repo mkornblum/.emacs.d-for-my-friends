@@ -16,7 +16,11 @@
 
 (use-package add-node-modules-path
   :ensure t)
+(use-package auto-complete
+  :ensure t)
 (use-package auto-indent-mode
+  :ensure t)
+(use-package company
   :ensure t)
 (use-package dired
   :ensure t)
@@ -34,6 +38,8 @@
   :ensure t)
 (use-package flycheck
   :ensure t)
+(use-package flycheck-flow
+  :ensure t)
 (use-package highline
   :ensure t)
 (use-package ido
@@ -46,6 +52,8 @@
   :ensure t)
 (use-package lua-mode
   :ensure t)
+(use-package markdown-mode
+  :ensure t)
 (use-package magit
   :ensure t)
 (use-package move-dup
@@ -54,7 +62,11 @@
   :ensure t)
 (use-package powerline
   :ensure t)
+(use-package prettier-js
+  :ensure t)
 (use-package rjsx-mode
+  :ensure t)
+(use-package sass-mode
   :ensure t)
 (use-package simp
   :ensure t)
