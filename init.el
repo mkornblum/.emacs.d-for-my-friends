@@ -22,7 +22,10 @@
   :ensure t
   :pin gnu)
 
-(use-package add-node-modules-path)
+(use-package add-node-modules-path
+  :hook ((web-mode . add-node-modules-path)
+	 (rjsx-mode . add-node-modules-path)
+	 (js2-mode . add-node-modules-path)))
 (use-package auto-complete)
 (use-package auto-indent-mode)
 (use-package company)
@@ -51,7 +54,8 @@
   :config
   (global-emojify-mode))
 (use-package eslintd-fix
-  :hook (web-mode . eslintd-fix-mode))
+  :hook ((web-mode . eslintd-fix-mode)
+	 (rjsx-mode . eslintd-fix-mode)))
 (use-package exec-path-from-shell)
 (use-package expand-region)
 (use-package flycheck)
