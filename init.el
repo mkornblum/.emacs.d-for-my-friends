@@ -19,16 +19,12 @@
 (use-package my-functions)
 (use-package my-keybindings)
 
-(use-package add-node-modules-path
-  :ensure t)
-(use-package auto-complete
-  :ensure t)
-(use-package auto-indent-mode
-  :ensure t)
-(use-package company
-  :ensure t)
+(use-package add-node-modules-path)
+(use-package auto-complete)
+(use-package auto-indent-mode)
+(use-package company)
 (use-package counsel
-  :ensure t
+  :delight
   :bind*
   (("M-x" . counsel-M-x)
    ("C-s" . swiper)
@@ -36,81 +32,66 @@
    ("C-c d d" . counsel-descbinds)
    ("C-c s s" . counsel-ag))
   :config
-  (setq ivy-re-builders-alist
-	'((swiper . ivy--regex-plus)
-	  (t      . ivy--regex-fuzzy)))
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-extra-directories nil)
-  (setq ivy-count-format "(%d/%d) ")
-  (counsel-mode)
-  (ivy-mode 1))
-(use-package dired
-  :ensure t)
-(use-package dired-efap
-  :ensure t)
-(use-package elm-mode
-  :ensure t)
+  (progn
+    (setq ivy-re-builders-alist
+	  '((swiper . ivy--regex-plus)
+	    (t      . ivy--regex-fuzzy)))
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-extra-directories nil)
+    (setq ivy-count-format "(%d/%d) ")
+    (counsel-mode)
+    (ivy-mode 1)))
+(use-package dired)
+(use-package dired-efap)
+(use-package elm-mode)
 (use-package emojify
-  :ensure t
   :config
   (global-emojify-mode))
-(use-package exec-path-from-shell
-  :ensure t)
-(use-package expand-region
-  :ensure t)
-(use-package flycheck
-  :ensure t)
-(use-package flycheck-flow
-  :ensure t)
+(use-package exec-path-from-shell)
+(use-package expand-region)
+(use-package flycheck)
+(use-package flycheck-flow)
 (use-package highline
-  :ensure t)
-(use-package ido
-  :ensure t)
-(use-package ido-completing-read+
-  :ensure t)
-(use-package itail
-  :ensure t)
-(use-package isearch-symbol-at-point
-  :ensure t)
-(use-package lua-mode
-  :ensure t)
-(use-package markdown-mode
-  :ensure t)
+  :delight)
+(use-package ido)
+(use-package ido-completing-read+)
+(use-package itail)
+(use-package isearch-symbol-at-point)
+(use-package lua-mode)
+(use-package markdown-mode)
 (use-package magit
-  :ensure t
   :bind ("M-j g" . magit-status))
-(use-package move-dup
-  :ensure t)
-(use-package multiple-cursors
-  :ensure t)
-(use-package powerline
-  :ensure t)
-(use-package prettier-js
-  :ensure t)
-(use-package rjsx-mode
-  :ensure t)
-(use-package sass-mode
-  :ensure t)
-(use-package simp
-  :ensure t)
-(use-package slime
-  :ensure t)
+(use-package move-dup)
+(use-package multiple-cursors)
+(use-package powerline)
+(use-package prettier-js)
+(use-package rjsx-mode)
+(use-package sass-mode)
+(use-package simp)
+(use-package slime)
 (use-package solarized-theme
-  :ensure t
   :init 
   (load-theme 'solarized-dark t t)
   (enable-theme 'solarized-dark))
-(use-package smart-indent-rigidly
-  :ensure t)
-(use-package smex
-  :ensure t)
-(use-package tide
-  :ensure t)
-(use-package visible-mark
-  :ensure t)
+(use-package smart-indent-rigidly)
+(use-package smex)
+(use-package tide)
+(use-package visible-mark)
 (use-package web-mode
-  :ensure t
-  :mode ("\\.js\\'" . web-mode))
+  :mode
+  ("\\.html\\'" . web-mode)
+  ("\\.erb\\'" . web-mode)
+  ("\\.mustache\\'" . web-mode)
+  ("\\.js?\\'" . web-mode)
+  :config
+  (setq web-mode-tag-auto-close-style t)
+  (setq web-mode-enable-auto-closing t)
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-enable-auto-indentation t)
+  (setq web-mode-enable-auto-opening t)
+  (setq web-mode-enable-auto-quoting t)
+  (setq web-mode-content-types-alist
+    '(("jsx" . "\\.js[x]?\\'"))))
 
 ;; (use-package my-theme)
 ;; (use-package my-isearch)
