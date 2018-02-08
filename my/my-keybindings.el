@@ -63,7 +63,6 @@
 (global-set-key (kbd "M-j S") 'simp-project-rgrep-thing-at-point)
 (global-set-key (kbd "M-j b") 'simp-project-ibuffer-files-only)
 (global-set-key (kbd "M-j B") 'simp-project-ibuffer)
-(global-set-key (kbd "M-j g") 'magit-status)
 (global-set-key (kbd "M-j M") 'rename-current-buffer-and-file)
 (global-set-key (kbd "M-j G") 'git-timemachine)
 

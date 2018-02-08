@@ -16,6 +16,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package my-functions)
+(use-package my-keybindings)
+
 (use-package add-node-modules-path
   :ensure t)
 (use-package auto-complete
@@ -74,8 +77,9 @@
 (use-package markdown-mode
   :ensure t)
 (use-package magit
-  :ensure t)
-(use-package movepp-dup
+  :ensure t
+  :bind ("M-j g" . magit-status))
+(use-package move-dup
   :ensure t)
 (use-package multiple-cursors
   :ensure t)
@@ -105,17 +109,15 @@
 (use-package visible-mark
   :ensure t)
 (use-package web-mode
-  :ensure t)
+  :ensure t
+  :mode ("\\.js\\'" . web-mode))
 
 ;; (use-package my-theme)
 ;; (use-package my-isearch)
-(use-package my-backup)
+;; (use-package my-backup)
 ;; (use-package my-autoloads)
 ;; (use-package my-add-to-lists)
 ;; (use-package my-project-definitions)
-(use-package my-functions)
-;; (use-package my-initializers)
-(use-package my-keybindings)
 ;; (use-package my-hooks)
 ;; (use-package my-settings)
 
