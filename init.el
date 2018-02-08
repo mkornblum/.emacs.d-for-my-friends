@@ -58,8 +58,16 @@
 	 (rjsx-mode . eslintd-fix-mode)))
 (use-package exec-path-from-shell)
 (use-package expand-region)
-(use-package flycheck)
-(use-package flycheck-flow)
+(use-package flycheck
+  :hook ((web-mode . flycheck-mode)
+	 (rjsx-mode . flycheck-mode)
+	 (js2-mode . flycheck-mode)))
+(use-package flycheck-flow
+  :config
+  (progn
+    (flycheck-add-mode 'javascript-flow 'web-mode)
+    (flycheck-add-mode 'javascript-flow 'rjsx-mode)
+    (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
 (use-package highline
   :delight global-highline-mode)
 (use-package ido)
@@ -73,7 +81,6 @@
 (use-package move-dup)
 (use-package multiple-cursors)
 (use-package powerline)
-(use-package prettier-js)
 (use-package rjsx-mode)
 (use-package sass-mode)
 (use-package simp)
