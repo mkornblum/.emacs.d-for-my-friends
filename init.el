@@ -18,6 +18,9 @@
 
 (use-package my-functions)
 (use-package my-keybindings)
+(use-package delight
+  :ensure t
+  :pin gnu)
 
 (use-package add-node-modules-path)
 (use-package auto-complete)
@@ -47,12 +50,14 @@
 (use-package emojify
   :config
   (global-emojify-mode))
+(use-package eslintd-fix
+  :hook (web-mode . eslintd-fix-mode))
 (use-package exec-path-from-shell)
 (use-package expand-region)
 (use-package flycheck)
 (use-package flycheck-flow)
 (use-package highline
-  :delight)
+  :delight global-highline-mode)
 (use-package ido)
 (use-package ido-completing-read+)
 (use-package itail)
@@ -91,14 +96,14 @@
   (setq web-mode-enable-auto-opening t)
   (setq web-mode-enable-auto-quoting t)
   (setq web-mode-content-types-alist
-    '(("jsx" . "\\.js[x]?\\'"))))
+	'(("jsx" . "\\.js[x]?\\'"))))
 
 ;; (use-package my-theme)
 ;; (use-package my-isearch)
 ;; (use-package my-backup)
 ;; (use-package my-autoloads)
 ;; (use-package my-add-to-lists)
-;; (use-package my-project-definitions)
+(use-package my-project-definitions)
 ;; (use-package my-hooks)
 ;; (use-package my-settings)
 
