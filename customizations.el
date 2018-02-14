@@ -11,7 +11,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (delight dired web-mode visible-mark use-package tide solarized-theme smex smart-indent-rigidly slime simp sass-mode rjsx-mode prettier-js powerline multiple-cursors move-dup markdown-mode magit lua-mode itail isearch-symbol-at-point ido-completing-read+ highline flycheck-flow expand-region exec-path-from-shell eslintd-fix emojify elm-mode dired-efap counsel company auto-indent-mode auto-complete add-node-modules-path)))
+    (git-timemachine delight dired web-mode visible-mark use-package tide solarized-theme smex smart-indent-rigidly slime simp sass-mode rjsx-mode prettier-js powerline multiple-cursors move-dup markdown-mode magit lua-mode itail isearch-symbol-at-point ido-completing-read+ highline flycheck-flow expand-region exec-path-from-shell eslintd-fix emojify elm-mode dired-efap counsel company auto-indent-mode auto-complete add-node-modules-path)))
  '(web-mode-code-indent-offset 2)
  '(web-mode-markup-indent-offset 2))
 (custom-set-faces

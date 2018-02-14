@@ -67,6 +67,7 @@
     (flycheck-add-mode 'javascript-flow 'web-mode)
     (flycheck-add-mode 'javascript-flow 'rjsx-mode)
     (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
+(use-package git-timemachine)
 (use-package highline
   :delight global-highline-mode)
 (use-package ido)
