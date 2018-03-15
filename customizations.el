@@ -7,12 +7,15 @@
  '(global-highline-mode t)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
+ '(magit-bury-buffer-function (quote magit-mode-quit-window))
  '(ns-command-modifier (quote meta))
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (git-timemachine delight dired web-mode visible-mark use-package tide solarized-theme smex smart-indent-rigidly slime simp sass-mode rjsx-mode prettier-js powerline multiple-cursors move-dup markdown-mode magit lua-mode itail isearch-symbol-at-point ido-completing-read+ highline flycheck-flow expand-region exec-path-from-shell eslintd-fix emojify elm-mode dired-efap counsel company auto-indent-mode auto-complete add-node-modules-path)))
+    (flow-minor-mode wgrep company-flow avy git-timemachine delight dired web-mode visible-mark use-package tide solarized-theme smex smart-indent-rigidly slime simp sass-mode rjsx-mode prettier-js powerline multiple-cursors move-dup markdown-mode magit lua-mode itail isearch-symbol-at-point ido-completing-read+ highline flycheck-flow expand-region exec-path-from-shell eslintd-fix emojify elm-mode dired-efap counsel company auto-indent-mode auto-complete add-node-modules-path)))
+ '(show-paren-mode t)
  '(web-mode-code-indent-offset 2)
+ '(web-mode-enable-auto-quoting nil)
  '(web-mode-markup-indent-offset 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

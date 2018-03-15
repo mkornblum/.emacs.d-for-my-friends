@@ -27,8 +27,17 @@
 	 (rjsx-mode . add-node-modules-path)
 	 (js2-mode . add-node-modules-path)))
 (use-package auto-complete)
+(use-package avy)
 (use-package auto-indent-mode)
-(use-package company)
+(use-package company
+  :diminish company-mode
+  :hook ((after-init-hook . global-company-mode))
+  :config
+  (add-to-list 'company-backends 'company-flow)
+  (add-to-list 'company-backends 'company-dabbrev)
+  (add-to-list 'company-backends 'company-dabbrev-code)
+  (add-to-list 'company-backends 'company-etags))
+(use-package company-flow)
 (use-package counsel
   :delight
   :bind*
@@ -67,6 +76,7 @@
     (flycheck-add-mode 'javascript-flow 'web-mode)
     (flycheck-add-mode 'javascript-flow 'rjsx-mode)
     (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
+
 (use-package git-timemachine)
 (use-package highline
   :delight global-highline-mode)
@@ -74,6 +84,8 @@
 (use-package ido-completing-read+)
 (use-package itail)
 (use-package isearch-symbol-at-point)
+(use-package flow-minor-mode
+  :hook ((web-mode . flow-minor-enable-automatically)))
 (use-package lua-mode)
 (use-package markdown-mode)
 (use-package magit
