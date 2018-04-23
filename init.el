@@ -1,5 +1,14 @@
-(let ((default-directory "~/.emacs.d/"))
-  (normal-top-level-add-subdirs-to-load-path))
+;;(let ((default-directory "~/.emacs.d/"))
+;;  (normal-top-level-add-subdirs-to-load-path))
+
+(let ((default-directory  "~/.emacs.d/"))
+  (setq load-path
+        (append
+         (let ((load-path  (copy-sequence load-path))) ;; Shadow
+           (append 
+            (normal-top-level-add-subdirs-to-load-path)))
+         load-path)))
+
 (setq custom-file "~/.emacs.d/customizations.el")
 (load custom-file)
 
@@ -84,14 +93,16 @@
 (use-package ido-completing-read+)
 (use-package itail)
 (use-package isearch-symbol-at-point)
-(use-package flow-minor-mode
-  :hook ((web-mode . flow-minor-enable-automatically)))
+(use-package flow-minor-mode)
 (use-package lua-mode)
 (use-package markdown-mode)
 (use-package magit
   :bind ("M-j g" . magit-status))
 (use-package move-dup)
 (use-package multiple-cursors)
+(use-package org)
+(use-package ox)
+(use-package ox-reveal)
 (use-package powerline)
 (use-package rjsx-mode)
 (use-package sass-mode)
@@ -99,8 +110,8 @@
 (use-package slime)
 (use-package solarized-theme
   :init 
-  (load-theme 'solarized-dark t t)
-  (enable-theme 'solarized-dark))
+  (load-theme 'solarized-light t t)
+  (enable-theme 'solarized-light))
 (use-package smart-indent-rigidly)
 (use-package smex)
 (use-package tide)
