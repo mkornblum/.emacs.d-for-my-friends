@@ -1,6 +1,3 @@
-;;(let ((default-directory "~/.emacs.d/"))
-;;  (normal-top-level-add-subdirs-to-load-path))
-
 (let ((default-directory  "~/.emacs.d/"))
   (setq load-path
         (append
