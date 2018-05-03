@@ -42,7 +42,8 @@
   (add-to-list 'company-backends 'company-flow)
   (add-to-list 'company-backends 'company-dabbrev)
   (add-to-list 'company-backends 'company-dabbrev-code)
-  (add-to-list 'company-backends 'company-etags))
+  (add-to-list 'company-backends 'company-etags)
+  (setq company-tooltip-align-annotations t))
 (use-package company-flow)
 (use-package counsel
   :delight
@@ -111,15 +112,33 @@
   (enable-theme 'solarized-light))
 (use-package smart-indent-rigidly)
 (use-package smex)
-(use-package tide)
+(use-package tide
+  :preface
+  (defun setup-tide-mode ()
+    (tide-setup)
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (eldoc-mode +1)
+    (tide-hl-identifier-mode +1)
+    (company-mode +1))
+  :hook
+  (typescript-mode . setup-tide-mode)
+  (web-mode . (lambda ()
+		(when (string-equal "tsx" (file-name-extension buffer-file-name))
+		  (setup-tide-mode)))))
+(use-package typescript-mode
+  :mode
+  ("\\.ts\\'" . typescript-mode))
 (use-package visible-mark)
 (use-package web-mode
   :mode
   ("\\.html\\'" . web-mode)
   ("\\.erb\\'" . web-mode)
   ("\\.mustache\\'" . web-mode)
+  ("\\.tsx\\'" . web-mode)
   ("\\.js?\\'" . web-mode)
   :config
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
   (setq web-mode-tag-auto-close-style t)
   (setq web-mode-enable-auto-closing t)
   (setq web-mode-enable-auto-pairing t)
