@@ -30,6 +30,7 @@
 
 (use-package add-node-modules-path
   :hook ((web-mode . add-node-modules-path)
+	 (typescript-mode . add-node-modules-path)
 	 (rjsx-mode . add-node-modules-path)
 	 (js2-mode . add-node-modules-path)))
 (use-package auto-complete)
@@ -101,6 +102,11 @@
 (use-package org)
 (use-package ox)
 (use-package ox-reveal)
+(use-package prettier-js
+  :hook
+  (web-mode . (lambda ()
+		(when (string-equal "tsx" (file-name-extension buffer-file-name))
+		  (prettier-js-mode)))))
 (use-package powerline)
 (use-package rjsx-mode)
 (use-package sass-mode)
