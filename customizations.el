@@ -10,6 +10,7 @@
  '(magit-bury-buffer-function (quote magit-mode-quit-window))
  '(magit-diff-use-overlays nil)
  '(ns-command-modifier (quote meta))
+ '(org-agenda-files (quote ("~/notes/")))
  '(org-reveal-hlevel 2)
  '(org-reveal-title-slide (quote auto))
  '(org-reveal-transition "linear")
