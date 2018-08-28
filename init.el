@@ -65,10 +65,6 @@
     (ivy-mode 1)))
 (use-package dired)
 (use-package dired-efap)
-(use-package elm-mode)
-(use-package emojify
-  :config
-  (global-emojify-mode))
 (use-package eslintd-fix
   :hook ((web-mode . eslintd-fix-mode)
 	 (rjsx-mode . eslintd-fix-mode)))
@@ -78,12 +74,6 @@
   :hook ((web-mode . flycheck-mode)
 	 (rjsx-mode . flycheck-mode)
 	 (js2-mode . flycheck-mode)))
-(use-package flycheck-flow
-  :config
-  (progn
-    (flycheck-add-mode 'javascript-flow 'web-mode)
-    (flycheck-add-mode 'javascript-flow 'rjsx-mode)
-    (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
 (use-package git-timemachine)
 (use-package highline
   :delight global-highline-mode)
@@ -91,8 +81,6 @@
 (use-package ido-completing-read+)
 (use-package itail)
 (use-package isearch-symbol-at-point)
-(use-package flow-minor-mode)
-(use-package lua-mode)
 (use-package lsp-mode
   :ensure t
   :init (setq lsp-inhibit-message t
@@ -123,7 +111,7 @@
   (add-hook 'java-mode-hook  'company-mode)
   (add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
   (add-hook 'java-mode-hook  'lsp-ui-sideline-mode)
-  (setq lsp-java--workspace-folders (list "/Users/mark/code/java-koans/koans/src")))
+  (setq lsp-java--workspace-folders (list "~/code/omnidian")))
 (use-package markdown-mode)
 (use-package magit
   :bind ("M-j g" . magit-status))
@@ -138,6 +126,12 @@
 		(when (string-equal "tsx" (file-name-extension buffer-file-name))
 		  (prettier-js-mode)))))
 (use-package powerline)
+(use-package projectile
+  :diminish projectile-mode
+  :init
+  (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
+  :config
+  (projectile-global-mode))
 (use-package rjsx-mode)
 (use-package sass-mode)
 (use-package simp)
