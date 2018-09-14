@@ -108,9 +108,23 @@
   (add-hook 'java-mode-hook  'lsp-java-enable)
   (add-hook 'java-mode-hook  'flycheck-mode)
   (add-hook 'java-mode-hook  'company-mode)
+  (add-hook 'java-mode-hook (lambda ()
+			      (setq c-basic-offset 4
+				    tab-width 4
+				    indent-tabs-mode t)))
   (add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
   (add-hook 'java-mode-hook  'lsp-ui-sideline-mode)
-  (setq lsp-java--workspace-folders (list "~/code/omnidian")))
+  (setq lsp-java--workspace-folders (list "~/code/omnidian/assetdataservice"
+					  "~/code/omnidian/core"
+					  "~/code/omnidian/energydataservice"
+					  "~/code/omnidian/homeowner"
+					  "~/code/omnidian/Ingestion"
+					  "~/code/omnidian/partnerportal"
+					  "~/code/omnidian/replay"
+					  "~/code/omnidian/Solar"
+					  "~/code/omnidian/aggregator"
+					  "~/code/omnidian/messaging"
+					  "~/code/omnidian/AlertEngine")))
 (use-package markdown-mode)
 (use-package magit
   :bind ("M-j g" . magit-status))
