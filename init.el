@@ -83,7 +83,6 @@
 (use-package dired-efap)
 (use-package eslintd-fix
   :hook ((web-mode . eslintd-fix-mode)
-(use-package exec-path-from-shell)
          (rjsx-mode . eslintd-fix-mode)))
 (use-package expand-region)
 (use-package flycheck
@@ -218,7 +217,6 @@
 ;; (use-package my-settings)
 
 (go-to-hell-bars)
-(exec-path-from-shell-initialize)
 
 (setq
  backup-by-copying t      ; don't clobber symlinks
