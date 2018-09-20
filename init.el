@@ -158,15 +158,18 @@
 (use-package projectile
   :diminish projectile-mode
   :init
+  (projectile-mode +1)
   (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
   :config
+  (setq projectile-indexing-method 'alien)
+  (setq projectile-enable-caching 't)
   (projectile-global-mode))
 (use-package rjsx-mode)
 (use-package sass-mode)
 (use-package simp)
 (use-package slime)
 (use-package solarized-theme
-  :init 
+  :init
   (load-theme 'solarized-light t t)
   (enable-theme 'solarized-light))
 (use-package smart-indent-rigidly)
@@ -227,3 +230,12 @@
  kept-new-versions 6
  kept-old-versions 2
  version-control t)       ; use versioned backups
+
+; invalidate projectile cache when switching branches in magit
+(defun run-projectile-invalidate-cache (&rest _args)
+  ;; We ignore the args to `magit-checkout'.
+  (projectile-invalidate-cache nil))
+(advice-add 'magit-checkout
+            :after #'run-projectile-invalidate-cache)
+(advice-add 'magit-branch-and-checkout ; This is `b c'.
+            :after #'run-projectile-invalidate-cache)
