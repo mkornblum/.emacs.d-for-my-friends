@@ -130,22 +130,22 @@
                                     indent-tabs-mode t)))
   (add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
   (add-hook 'java-mode-hook  'lsp-ui-sideline-mode)
-  (setq lsp-java--workspace-folders (list "~/code/omnidian/assetdataservice"
-					  "~/code/omnidian/core"
-					  "~/code/omnidian/energydataservice"
-					  "~/code/omnidian/homeowner"
-					  "~/code/omnidian/Ingestion"
-					  "~/code/omnidian/partnerportal"
-					  "~/code/omnidian/replay"
-					  "~/code/omnidian/Solar"
-					  "~/code/omnidian/aggregator"
-					  "~/code/omnidian/messaging"
-					  "~/code/omnidian/AlertEngine")))
+  (setq lsp-java--workspace-folders (list "~/code/omnidian"
+                                          "~/code/omnidian/assetdataservice"
+                                          "~/code/omnidian/core"
+                                          "~/code/omnidian/energydataservice"
+                                          "~/code/omnidian/homeowner"
+                                          "~/code/omnidian/Ingestion"
+                                          "~/code/omnidian/partnerportal"
+                                          "~/code/omnidian/replay"
+                                          "~/code/omnidian/Solar"
+                                          "~/code/omnidian/aggregator"
+                                          "~/code/omnidian/messaging"
+                                          "~/code/omnidian/AlertEngine")))
 (use-package markdown-mode)
 (use-package magit
   :bind ("M-j g" . magit-status))
 (use-package move-dup)
-(use-package multiple-cursors)
 (use-package org)
 (use-package ox)
 (use-package ox-reveal)
