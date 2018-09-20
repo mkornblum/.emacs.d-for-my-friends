@@ -21,6 +21,23 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(defmacro hook-if (hook predicate &rest body)
+  `(add-hook ,hook (lambda ()
+                     (if ,predicate
+                         (progn
+                           ,@body)))))
+
+(defmacro hook-unless (hook predicate &rest body)
+  `(hook-if ,hook (not ,predicate) ,@body))
+
+(defun major-mode-match-p (mode)
+  (string-match mode (symbol-name major-mode)))
+
+(hook-unless 'find-file-hook (major-mode-match-p "makefile") (untabify-all))
+(hook-unless 'find-file-hook buffer-read-only (delete-trailing-whitespace))
+(hook-unless 'before-save-hook (major-mode-match-p "makefile") (untabify-all))
+(hook-unless 'before-save-hook (major-mode-match-p "markdown") (delete-trailing-whitespace))
+
 (use-package my-functions)
 (use-package my-keybindings)
 (use-package delight
