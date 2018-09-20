@@ -2,7 +2,7 @@
   (setq load-path
         (append
          (let ((load-path  (copy-sequence load-path))) ;; Shadow
-           (append 
+           (append
             (normal-top-level-add-subdirs-to-load-path)))
          load-path)))
 
@@ -46,9 +46,9 @@
 
 (use-package add-node-modules-path
   :hook ((web-mode . add-node-modules-path)
-	 (typescript-mode . add-node-modules-path)
-	 (rjsx-mode . add-node-modules-path)
-	 (js2-mode . add-node-modules-path)))
+         (typescript-mode . add-node-modules-path)
+         (rjsx-mode . add-node-modules-path)
+         (js2-mode . add-node-modules-path)))
 (use-package auto-complete)
 (use-package avy)
 (use-package auto-indent-mode)
@@ -73,8 +73,8 @@
   :config
   (progn
     (setq ivy-re-builders-alist
-	  '((swiper . ivy--regex-plus)
-	    (t      . ivy--regex-fuzzy)))
+          '((swiper . ivy--regex-plus)
+            (t      . ivy--regex-fuzzy)))
     (setq ivy-use-virtual-buffers t)
     (setq ivy-count-format "(%d/%d) ")
     (counsel-mode)
@@ -83,13 +83,13 @@
 (use-package dired-efap)
 (use-package eslintd-fix
   :hook ((web-mode . eslintd-fix-mode)
-	 (rjsx-mode . eslintd-fix-mode)))
 (use-package exec-path-from-shell)
+         (rjsx-mode . eslintd-fix-mode)))
 (use-package expand-region)
 (use-package flycheck
   :hook ((web-mode . flycheck-mode)
-	 (rjsx-mode . flycheck-mode)
-	 (js2-mode . flycheck-mode)))
+         (rjsx-mode . flycheck-mode)
+         (js2-mode . flycheck-mode)))
 (use-package git-timemachine)
 (use-package highline
   :delight global-highline-mode)
@@ -126,9 +126,9 @@
   (add-hook 'java-mode-hook  'flycheck-mode)
   (add-hook 'java-mode-hook  'company-mode)
   (add-hook 'java-mode-hook (lambda ()
-			      (setq c-basic-offset 4
-				    tab-width 4
-				    indent-tabs-mode t)))
+                              (setq c-basic-offset 4
+                                    tab-width 4
+                                    indent-tabs-mode t)))
   (add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
   (add-hook 'java-mode-hook  'lsp-ui-sideline-mode)
   (setq lsp-java--workspace-folders (list "~/code/omnidian/assetdataservice"
@@ -153,8 +153,8 @@
 (use-package prettier-js
   :hook
   (web-mode . (lambda ()
-		(when (string-equal "tsx" (file-name-extension buffer-file-name))
-		  (prettier-js-mode)))))
+                (when (string-equal "tsx" (file-name-extension buffer-file-name))
+                  (prettier-js-mode)))))
 (use-package powerline)
 (use-package projectile
   :diminish projectile-mode
@@ -184,8 +184,8 @@
   :hook
   (typescript-mode . setup-tide-mode)
   (web-mode . (lambda ()
-		(when (string-equal "tsx" (file-name-extension buffer-file-name))
-		  (setup-tide-mode)))))
+                (when (string-equal "tsx" (file-name-extension buffer-file-name))
+                  (setup-tide-mode)))))
 (use-package typescript-mode
   :mode
   ("\\.ts\\'" . typescript-mode))
@@ -206,7 +206,7 @@
   (setq web-mode-enable-auto-opening t)
   (setq web-mode-enable-auto-quoting t)
   (setq web-mode-content-types-alist
-	'(("jsx" . "\\.js[x]?\\'"))))
+        '(("jsx" . "\\.js[x]?\\'"))))
 
 ;; (use-package my-theme)
 ;; (use-package my-isearch)
