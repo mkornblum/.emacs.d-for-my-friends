@@ -8,6 +8,7 @@
  '(global-highline-mode t)
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
+ '(lsp-java-import-maven-enabled t)
  '(lsp-ui-sideline-show-code-actions nil)
  '(lsp-ui-sideline-show-hover nil)
  '(lsp-ui-sideline-show-symbol nil)
@@ -21,7 +22,7 @@
  '(package-enable-at-startup nil)
  '(package-selected-packages
    (quote
-    (ripgrep ag counsel-projectile projectile lsp-ui lsp-java company-lsp htmlize ox-reveal flow-minor-mode wgrep company-flow avy git-timemachine delight dired web-mode visible-mark use-package tide solarized-theme smex smart-indent-rigidly slime simp sass-mode rjsx-mode prettier-js powerline multiple-cursors move-dup markdown-mode magit lua-mode itail isearch-symbol-at-point ido-completing-read+ highline flycheck-flow expand-region exec-path-from-shell eslintd-fix emojify elm-mode dired-efap counsel company auto-indent-mode auto-complete add-node-modules-path)))
+    (yaml-mode dap-mode ripgrep ag counsel-projectile projectile lsp-ui lsp-java company-lsp htmlize ox-reveal flow-minor-mode wgrep company-flow avy git-timemachine delight dired web-mode visible-mark use-package tide solarized-theme smex smart-indent-rigidly slime simp sass-mode rjsx-mode prettier-js powerline multiple-cursors move-dup markdown-mode magit lua-mode itail isearch-symbol-at-point ido-completing-read+ highline flycheck-flow expand-region exec-path-from-shell eslintd-fix emojify elm-mode dired-efap counsel company auto-indent-mode auto-complete add-node-modules-path)))
  '(show-paren-mode t)
  '(typescript-indent-level 2)
  '(web-mode-code-indent-offset 2)

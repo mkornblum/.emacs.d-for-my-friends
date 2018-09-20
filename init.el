@@ -209,6 +209,7 @@
   (setq web-mode-enable-auto-quoting t)
   (setq web-mode-content-types-alist
         '(("jsx" . "\\.js[x]?\\'"))))
+(use-package yaml-mode)
 
 ;; (use-package my-theme)
 ;; (use-package my-isearch)
