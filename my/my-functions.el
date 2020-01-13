@@ -253,4 +253,43 @@ WIP on branchname: short-sha commit-message"
   (when-let ((executable (locate-npm-executable "prettier")))
              (setq-local prettier-js-command executable)))
 
+(defun clone-buffer-to-file (filename)
+  "Clone the current buffer into FILENAME"
+  (save-restriction
+    (widen)
+    (write-region (point-min) (point-max) filename nil nil nil)))
+
+;; (add-hook 'after-save-hook (lambda ()(clone-buffer-to-file "c:/Program Files/Apache Software Foundation/apache-tomcat-8.5.34/webapps/Solar/WEB-INF/jsp/alerts/alertDiagnosis.jsp")) nil t)
+
+(defun increment-number-or-char-at-point ()
+  (interactive)
+  (let
+      ((nump nil))
+    (save-excursion
+      (skip-chars-backward "0123456789")
+      (if
+          (looking-at "[0123456789]+")
+          (progn
+            (replace-match
+             (number-to-string
+              (1+
+               (string-to-number
+                (match-string 0)))))
+            (setq nump t))))
+    (if nump nil
+      (save-excursion
+        (condition-case nil
+            (let
+                ((chr
+                  (1+
+                   (char-after))))
+              (if
+                  (characterp chr)
+                  nil
+                (error "Cannot increment char by one"))
+              (delete-char 1)
+              (insert chr))
+          (error
+           (error "No character at point")))))))
+
 (provide 'my-functions)

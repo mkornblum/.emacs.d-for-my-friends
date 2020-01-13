@@ -25,7 +25,7 @@
 
 (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
 (flycheck-add-mode 'javascript-eslint 'web-mode)
-(flycheck-add-next-checker 'javascript-flow 'javascript-eslint)
+(flycheck-add-next-checker 'javascript-eslint)
 
 (set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
 ;; allows files to be opened like:

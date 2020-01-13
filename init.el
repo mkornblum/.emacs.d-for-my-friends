@@ -33,10 +33,12 @@
 (defun major-mode-match-p (mode)
   (string-match mode (symbol-name major-mode)))
 
-(hook-unless 'find-file-hook (major-mode-match-p "makefile") (untabify-all))
-(hook-unless 'find-file-hook buffer-read-only (delete-trailing-whitespace))
-(hook-unless 'before-save-hook (major-mode-match-p "makefile") (untabify-all))
-(hook-unless 'before-save-hook (major-mode-match-p "markdown") (delete-trailing-whitespace))
+;; (hook-unless 'find-file-hook (major-mode-match-p "makefile") (untabify-all))
+;; (hook-unless 'find-file-hook (major-mode-match-p "java") (untabify-all))
+;; (hook-unless 'find-file-hook buffer-read-only (delete-trailing-whitespace))
+;; (hook-unless 'before-save-hook (major-mode-match-p "makefile") (untabify-all))
+;; (hook-unless 'before-save-hook (major-mode-match-p "java") (untabify-all))
+;; (hook-unless 'before-save-hook (major-mode-match-p "markdown") (delete-trailing-whitespace))
 
 (use-package my-functions)
 (use-package my-keybindings)
@@ -45,10 +47,10 @@
   :pin gnu)
 
 (use-package add-node-modules-path
-  :hook ((web-mode . add-node-modules-path)
-         (typescript-mode . add-node-modules-path)
-         (rjsx-mode . add-node-modules-path)
-         (js2-mode . add-node-modules-path)))
+  :hook ((web-mode . add-node-modules-path)))
+;;          (typescript-mode . add-node-modules-path)
+;;          (rjsx-mode . add-node-modules-path)
+;;          (js2-mode . add-node-modules-path)))
 (use-package auto-complete)
 (use-package avy)
 (use-package auto-indent-mode)
@@ -72,23 +74,32 @@
    ("C-c s s" . counsel-ag))
   :config
   (progn
-    (setq ivy-re-builders-alist
-          '((swiper . ivy--regex-plus)
-            (t      . ivy--regex-fuzzy)))
     (setq ivy-use-virtual-buffers t)
     (setq ivy-count-format "(%d/%d) ")
     (counsel-mode)
     (ivy-mode 1)))
+(with-eval-after-load 'counsel
+  (when (eq system-type 'windows-nt)
+    (defun counsel-locate-cmd-es (input)
+      "Return a shell command based on INPUT."
+      (counsel-require-program "es.exe")
+      (format "es.exe -r %s"
+              (counsel--elisp-to-pcre
+               (ivy--regex input t))))))
 (use-package dired)
 (use-package dired-efap)
-(use-package eslintd-fix
-  :hook ((web-mode . eslintd-fix-mode)
-         (rjsx-mode . eslintd-fix-mode)))
+;; (use-package eslintd-fix
+;;   :hook ((web-mode . eslintd-fix-mode)
+;;          (rjsx-mode . eslintd-fix-mode)))
 (use-package expand-region)
 (use-package flycheck
   :hook ((web-mode . flycheck-mode)
          (rjsx-mode . flycheck-mode)
-         (js2-mode . flycheck-mode)))
+         (js2-mode . flycheck-mode))
+  :config (progn
+            (flycheck-add-mode 'javascript-eslint 'web-mode)
+            (advice-add 'flycheck-eslint-config-exists-p :override (lambda() t))
+            ))
 (use-package git-timemachine)
 (use-package highline
   :delight global-highline-mode)
@@ -96,52 +107,6 @@
 (use-package ido-completing-read+)
 (use-package itail)
 (use-package isearch-symbol-at-point)
-(use-package lsp-mode
-  :ensure t
-  :init (setq lsp-inhibit-message t
-              lsp-eldoc-render-all nil
-              lsp-highlight-symbol-at-point nil))
-(use-package company-lsp
-  :after  company
-  :ensure t
-  :config
-  (add-hook 'java-mode-hook (lambda () (push 'company-lsp company-backends)))
-  (setq company-lsp-enable-snippet t
-        company-lsp-cache-candidates t)
-  (push 'java-mode company-global-modes))
-(use-package lsp-ui
-  :ensure t
-  :config
-  (setq lsp-ui-sideline-enable t
-        lsp-ui-sideline-show-symbol t
-        lsp-ui-sideline-show-hover t
-        lsp-ui-sideline-show-code-actions t
-        lsp-ui-sideline-update-mode 'point))
-(use-package lsp-java
-  :ensure t
-  :requires (lsp-ui-flycheck lsp-ui-sideline)
-  :config
-  (add-hook 'java-mode-hook  'lsp-java-enable)
-  (add-hook 'java-mode-hook  'flycheck-mode)
-  (add-hook 'java-mode-hook  'company-mode)
-  (add-hook 'java-mode-hook (lambda ()
-                              (setq c-basic-offset 4
-                                    tab-width 4
-                                    indent-tabs-mode t)))
-  (add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
-  (add-hook 'java-mode-hook  'lsp-ui-sideline-mode)
-  (setq lsp-java--workspace-folders (list "~/code/omnidian"
-                                          "~/code/omnidian/assetdataservice"
-                                          "~/code/omnidian/core"
-                                          "~/code/omnidian/energydataservice"
-                                          "~/code/omnidian/homeowner"
-                                          "~/code/omnidian/Ingestion"
-                                          "~/code/omnidian/partnerportal"
-                                          "~/code/omnidian/replay"
-                                          "~/code/omnidian/Solar"
-                                          "~/code/omnidian/aggregator"
-                                          "~/code/omnidian/messaging"
-                                          "~/code/omnidian/AlertEngine")))
 (use-package markdown-mode)
 (use-package magit
   :bind ("M-j g" . magit-status))
@@ -198,9 +163,11 @@
   ("\\.erb\\'" . web-mode)
   ("\\.mustache\\'" . web-mode)
   ("\\.tsx\\'" . web-mode)
+  ("\\.jsp\\'" . web-mode)
   ("\\.js?\\'" . web-mode)
   :config
-  (flycheck-add-mode 'typescript-tslint 'web-mode)
+  ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
+  ;; (flycheck-add-mode 'typescript-tslint 'web-mode)
   (setq web-mode-tag-auto-close-style t)
   (setq web-mode-enable-auto-closing t)
   (setq web-mode-enable-auto-pairing t)
@@ -217,8 +184,11 @@
 ;; (use-package my-autoloads)
 ;; (use-package my-add-to-lists)
 (use-package my-project-definitions)
-;; (use-package my-hooks)
+(use-package my-hooks)
+(setq-default kill-read-only-ok t
+              indent-tabs-mode nil)
 ;; (use-package my-settings)
+
 
 (go-to-hell-bars)
 
@@ -232,7 +202,7 @@
  kept-old-versions 2
  version-control t)       ; use versioned backups
 
-; invalidate projectile cache when switching branches in magit
+                                        ; invalidate projectile cache when switching branches in magit
 (defun run-projectile-invalidate-cache (&rest _args)
   ;; We ignore the args to `magit-checkout'.
   (projectile-invalidate-cache nil))
@@ -240,3 +210,4 @@
             :after #'run-projectile-invalidate-cache)
 (advice-add 'magit-branch-and-checkout ; This is `b c'.
             :after #'run-projectile-invalidate-cache)
+(put 'downcase-region 'disabled nil)
