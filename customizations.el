@@ -6,7 +6,7 @@
  '(counsel-projectile-find-file-matcher (quote counsel-projectile-find-file-matcher-basename))
  '(create-lockfiles nil)
  '(css-indent-offset 2)
- '(diff-command "'C:\\Program Files\\GIt\\usr\\bin\\diff.exe'")
+ '(diff-command "'C:\\Program Files\\Git\\usr\\bin\\diff.exe'")
  '(ediff-custom-diff-program "'C:\\Program Files\\Git\\usr\\bin\\diff.exe'")
  '(ediff-diff-program "'C:\\Program Files\\Git\\usr\\bin\\diff.exe'")
  '(exec-path
@@ -46,4 +46,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:inherit nil :stipple nil :background "#fdf6e3" :foreground "#657b83" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "outline" :family "Consolas")))))
