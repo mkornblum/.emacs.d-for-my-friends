@@ -6,33 +6,31 @@
             (normal-top-level-add-subdirs-to-load-path)))
          load-path)))
 
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+
+(require 'my-functions)
+(require 'my-keybindings)
 (setq custom-file "~/.emacs.d/customizations.el")
 (load custom-file)
 
-(require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(package-initialize)
-
-;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(use-package my-functions)
-(use-package my-keybindings)
-(use-package delight
-  :ensure t
-  :pin gnu)
+(use-package delight)
 
 (use-package add-node-modules-path
   :hook ((web-mode . add-node-modules-path)
-	 (typescript-mode . add-node-modules-path)
-	 (rjsx-mode . add-node-modules-path)
-	 (js2-mode . add-node-modules-path)))
+	 (typescript-mode . add-node-modules-path)))
 (use-package auto-complete)
 (use-package avy)
 (use-package auto-indent-mode)
@@ -40,12 +38,10 @@
   :diminish company-mode
   :hook ((after-init-hook . global-company-mode))
   :config
-  (add-to-list 'company-backends 'company-flow)
   (add-to-list 'company-backends 'company-dabbrev)
   (add-to-list 'company-backends 'company-dabbrev-code)
   (add-to-list 'company-backends 'company-etags)
   (setq company-tooltip-align-annotations t))
-(use-package company-flow)
 (use-package counsel
   :delight
   :bind*
@@ -63,27 +59,12 @@
     (setq ivy-count-format "(%d/%d) ")
     (counsel-mode)
     (ivy-mode 1)))
-(use-package dired)
-(use-package dired-efap)
-(use-package elm-mode)
-(use-package emojify
-  :config
-  (global-emojify-mode))
 (use-package eslintd-fix
-  :hook ((web-mode . eslintd-fix-mode)
-	 (rjsx-mode . eslintd-fix-mode)))
+  :hook ((web-mode . eslintd-fix-mode)))
 (use-package exec-path-from-shell)
 (use-package expand-region)
 (use-package flycheck
-  :hook ((web-mode . flycheck-mode)
-	 (rjsx-mode . flycheck-mode)
-	 (js2-mode . flycheck-mode)))
-(use-package flycheck-flow
-  :config
-  (progn
-    (flycheck-add-mode 'javascript-flow 'web-mode)
-    (flycheck-add-mode 'javascript-flow 'rjsx-mode)
-    (flycheck-add-next-checker 'javascript-flow 'javascript-eslint)))
+  :hook ((web-mode . flycheck-mode)))
 (use-package git-timemachine)
 (use-package highline
   :delight global-highline-mode)
@@ -91,46 +72,30 @@
 (use-package ido-completing-read+)
 (use-package itail)
 (use-package isearch-symbol-at-point)
-(use-package flow-minor-mode)
 (use-package lua-mode)
 (use-package lsp-mode
-  :ensure t
   :init (setq lsp-inhibit-message t
               lsp-eldoc-render-all nil
               lsp-highlight-symbol-at-point nil))
 (use-package company-lsp
   :after  company
-  :ensure t
   :config
   (add-hook 'java-mode-hook (lambda () (push 'company-lsp company-backends)))
   (setq company-lsp-enable-snippet t
-        company-lsp-cache-candidates t)
-  (push 'java-mode company-global-modes))
+        company-lsp-cache-candidates t))
 (use-package lsp-ui
-  :ensure t
   :config
   (setq lsp-ui-sideline-enable t
         lsp-ui-sideline-show-symbol t
         lsp-ui-sideline-show-hover t
         lsp-ui-sideline-show-code-actions t
         lsp-ui-sideline-update-mode 'point))
-(use-package lsp-java
-  :ensure t
-  :requires (lsp-ui-flycheck lsp-ui-sideline)
-  :config
-  (add-hook 'java-mode-hook  'lsp-java-enable)
-  (add-hook 'java-mode-hook  'flycheck-mode)
-  (add-hook 'java-mode-hook  'company-mode)
-  (add-hook 'java-mode-hook  (lambda () (lsp-ui-flycheck-enable t)))
-  (add-hook 'java-mode-hook  'lsp-ui-sideline-mode)
-  (setq lsp-java--workspace-folders (list "/Users/mark/code/java-koans/koans/src")))
 (use-package markdown-mode)
 (use-package magit
   :bind ("M-j g" . magit-status))
 (use-package move-dup)
 (use-package multiple-cursors)
 (use-package org)
-(use-package ox)
 (use-package ox-reveal)
 (use-package prettier-js
   :hook
@@ -138,10 +103,6 @@
 		(when (string-equal "tsx" (file-name-extension buffer-file-name))
 		  (prettier-js-mode)))))
 (use-package powerline)
-(use-package rjsx-mode)
-(use-package sass-mode)
-(use-package simp)
-(use-package slime)
 (use-package solarized-theme
   :init 
   (load-theme 'solarized-light t t)
@@ -189,7 +150,7 @@
 ;; (use-package my-backup)
 ;; (use-package my-autoloads)
 ;; (use-package my-add-to-lists)
-(use-package my-project-definitions)
+;; (use-package my-project-definitions)
 ;; (use-package my-hooks)
 ;; (use-package my-settings)
 
@@ -197,6 +158,7 @@
 (exec-path-from-shell-initialize)
 
 (setq
+ default-directory "~/"
  backup-by-copying t      ; don't clobber symlinks
  backup-directory-alist '((".*" . "~/.emacs.d/.backups"))    ; don't litter my fs tree
  auto-save-file-name-transforms '((".*" "~/.emacs.d/.backups" t))
