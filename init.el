@@ -37,10 +37,6 @@
 (use-package company
   :diminish company-mode
   :hook ((after-init-hook . global-company-mode))
-  :config
-  (add-to-list 'company-backends 'company-dabbrev)
-  (add-to-list 'company-backends 'company-dabbrev-code)
-  (add-to-list 'company-backends 'company-etags)
   (setq company-tooltip-align-annotations t))
 (use-package counsel
   :delight
@@ -59,6 +55,7 @@
     (setq ivy-count-format "(%d/%d) ")
     (counsel-mode)
     (ivy-mode 1)))
+(use-package dap-mode)
 (use-package eslintd-fix
   :hook ((web-mode . eslintd-fix-mode)))
 (use-package exec-path-from-shell)
@@ -66,8 +63,6 @@
 (use-package flycheck
   :hook ((web-mode . flycheck-mode)))
 (use-package git-timemachine)
-(use-package highline
-  :delight global-highline-mode)
 (use-package ido)
 (use-package ido-completing-read+)
 (use-package itail)
@@ -76,13 +71,10 @@
 (use-package lsp-mode
   :init (setq lsp-inhibit-message t
               lsp-eldoc-render-all nil
-              lsp-highlight-symbol-at-point nil))
-(use-package company-lsp
-  :after  company
-  :config
-  (add-hook 'java-mode-hook (lambda () (push 'company-lsp company-backends)))
-  (setq company-lsp-enable-snippet t
-        company-lsp-cache-candidates t))
+              lsp-highlight-symbol-at-point nil)
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (java-mode . lsp))
+  :commands lsp)
 (use-package lsp-ui
   :config
   (setq lsp-ui-sideline-enable t
@@ -105,8 +97,7 @@
 (use-package powerline)
 (use-package solarized-theme
   :init 
-  (load-theme 'solarized-light t t)
-  (enable-theme 'solarized-light))
+  (load-theme 'solarized-light t))
 (use-package smart-indent-rigidly)
 (use-package smex)
 (use-package tide
