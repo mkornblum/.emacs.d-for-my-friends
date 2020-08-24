@@ -20,17 +20,14 @@
  '(lsp-ui-sideline-show-code-actions nil)
  '(lsp-ui-sideline-show-hover nil)
  '(lsp-ui-sideline-show-symbol nil)
- '(magit-bury-buffer-function (quote magit-mode-quit-window))
+ '(magit-bury-buffer-function 'magit-mode-quit-window)
  '(magit-diff-use-overlays nil)
- '(ns-command-modifier (quote meta))
- '(org-agenda-files (quote ("~/notes/")))
+ '(ns-command-modifier 'meta)
+ '(org-agenda-files '("~/notes/"))
  '(org-reveal-hlevel 2)
- '(org-reveal-title-slide (quote auto))
+ '(org-reveal-title-slide 'auto)
  '(org-reveal-transition "linear")
  '(package-enable-at-startup nil)
- '(package-selected-packages
-   (quote
-    (php-mode string-inflection elpy vlf ivy-hydra powershell ox-gfm yaml-mode dap-mode ripgrep ag counsel-projectile lsp-ui lsp-java company-lsp htmlize ox-reveal flow-minor-mode company-flow avy git-timemachine delight dired visible-mark smex smart-indent-rigidly simp sass-mode prettier-js powerline multiple-cursors move-dup markdown-mode magit lua-mode itail isearch-symbol-at-point ido-completing-read+ highline flycheck-flow expand-region exec-path-from-shell eslintd-fix emojify elm-mode dired-efap counsel company auto-indent-mode auto-complete add-node-modules-path)))
  '(projectile-generic-command "fd . -0")
  '(projectile-git-command "fd . -0")
  '(projectile-globally-ignored-directories

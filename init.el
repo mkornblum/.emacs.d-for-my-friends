@@ -6,64 +6,33 @@
             (normal-top-level-add-subdirs-to-load-path)))
          load-path)))
 
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+
+(require 'my-functions)
+(require 'my-keybindings)
 (setq custom-file "~/.emacs.d/customizations.el")
 (load custom-file)
 
-(require 'package)
-(setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(package-initialize)
-
-;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(defmacro hook-if (hook predicate &rest body)
-  `(add-hook ,hook (lambda ()
-                     (if ,predicate
-                         (progn
-                           ,@body)))))
-
-(defmacro hook-unless (hook predicate &rest body)
-  `(hook-if ,hook (not ,predicate) ,@body))
-
-(defun major-mode-match-p (mode)
-  (string-match mode (symbol-name major-mode)))
-
-;; (hook-unless 'find-file-hook (major-mode-match-p "makefile") (untabify-all))
-;; (hook-unless 'find-file-hook (major-mode-match-p "java") (untabify-all))
-;; (hook-unless 'find-file-hook buffer-read-only (delete-trailing-whitespace))
-;; (hook-unless 'before-save-hook (major-mode-match-p "makefile") (untabify-all))
-;; (hook-unless 'before-save-hook (major-mode-match-p "java") (untabify-all))
-;; (hook-unless 'before-save-hook (major-mode-match-p "markdown") (delete-trailing-whitespace))
-
-(use-package my-functions)
-(use-package my-keybindings)
-(use-package delight
-  :ensure t
-  :pin gnu)
-
-(use-package add-node-modules-path
-  :hook ((web-mode . add-node-modules-path)))
-;;          (typescript-mode . add-node-modules-path)
-;;          (rjsx-mode . add-node-modules-path)
-;;          (js2-mode . add-node-modules-path)))
 (use-package auto-complete)
 (use-package avy)
 (use-package auto-indent-mode)
 (use-package company
   :diminish company-mode
   :hook ((after-init-hook . global-company-mode))
-  :config
-  (add-to-list 'company-backends 'company-flow)
-  (add-to-list 'company-backends 'company-dabbrev)
-  (add-to-list 'company-backends 'company-dabbrev-code)
-  (add-to-list 'company-backends 'company-etags)
   (setq company-tooltip-align-annotations t))
-(use-package company-flow)
 (use-package counsel
   :delight
   :bind*
@@ -78,6 +47,7 @@
     (setq ivy-count-format "(%d/%d) ")
     (counsel-mode)
     (ivy-mode 1)))
+
 (with-eval-after-load 'counsel
   (when (eq system-type 'windows-nt)
     (defun counsel-locate-cmd-es (input)
@@ -86,33 +56,38 @@
       (format "es.exe -r %s"
               (counsel--elisp-to-pcre
                (ivy--regex input t))))))
-(use-package dired)
-(use-package dired-efap)
-;; (use-package eslintd-fix
-;;   :hook ((web-mode . eslintd-fix-mode)
-;;          (rjsx-mode . eslintd-fix-mode)))
+
+(use-package dap-mode)
+(use-package eslintd-fix
+  :hook ((web-mode . eslintd-fix-mode)))
+(use-package exec-path-from-shell)
 (use-package expand-region)
 (use-package flycheck
-  :hook ((web-mode . flycheck-mode)
-         (rjsx-mode . flycheck-mode)
-         (js2-mode . flycheck-mode))
-  :config (progn
-            (flycheck-add-mode 'javascript-eslint 'web-mode)
-            (advice-add 'flycheck-eslint-config-exists-p :override (lambda() t))
-            ))
+  :hook ((web-mode . flycheck-mode)))
 (use-package git-timemachine)
-(use-package highline
-  :delight global-highline-mode)
 (use-package ido)
 (use-package ido-completing-read+)
 (use-package itail)
 (use-package isearch-symbol-at-point)
+(use-package lsp-mode
+  :init (setq lsp-inhibit-message t
+              lsp-eldoc-render-all nil
+              lsp-highlight-symbol-at-point nil)
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (java-mode . lsp))
+  :commands lsp)
+(use-package lsp-ui
+  :config
+  (setq lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-symbol t
+        lsp-ui-sideline-show-hover t
+        lsp-ui-sideline-show-code-actions t
+        lsp-ui-sideline-update-mode 'point))
 (use-package markdown-mode)
 (use-package magit
   :bind ("M-j g" . magit-status))
 (use-package move-dup)
 (use-package org)
-(use-package ox)
 (use-package ox-reveal)
 (use-package prettier-js
   :hook
@@ -129,10 +104,8 @@
   (setq projectile-indexing-method 'alien)
   (setq projectile-enable-caching 't)
   (projectile-global-mode))
-(use-package rjsx-mode)
 (use-package sass-mode)
 (use-package simp)
-(use-package slime)
 (use-package solarized-theme
   :init
   (load-theme 'solarized-light t t)
@@ -183,16 +156,15 @@
 ;; (use-package my-backup)
 ;; (use-package my-autoloads)
 ;; (use-package my-add-to-lists)
-(use-package my-project-definitions)
-(use-package my-hooks)
-(setq-default kill-read-only-ok t
-              indent-tabs-mode nil)
+;; (use-package my-project-definitions)
+;; (use-package my-hooks)
 ;; (use-package my-settings)
 
 
 (go-to-hell-bars)
 
 (setq
+ default-directory "~/"
  backup-by-copying t      ; don't clobber symlinks
  backup-directory-alist '((".*" . "~/.emacs.d/.backups"))    ; don't litter my fs tree
  auto-save-file-name-transforms '((".*" "~/.emacs.d/.backups" t))
