@@ -21,6 +21,17 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
+;; from https://emacs-lsp.github.io/lsp-mode/page/performance/
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+(setq lsp-completion-provider :capf)
+
+(use-package org)
+(use-package company
+  :diminish company-mode
+  :hook ((after-init-hook . global-company-mode))
+  (setq company-tooltip-align-annotations t))
+
 (require 'my-functions)
 (require 'my-keybindings)
 (setq custom-file "~/.emacs.d/customizations.el")
@@ -34,10 +45,6 @@
 (use-package auto-complete)
 (use-package avy)
 (use-package auto-indent-mode)
-(use-package company
-  :diminish company-mode
-  :hook ((after-init-hook . global-company-mode))
-  (setq company-tooltip-align-annotations t))
 (use-package counsel
   :delight
   :bind*
@@ -87,7 +94,6 @@
   :bind ("M-j g" . magit-status))
 (use-package move-dup)
 (use-package multiple-cursors)
-(use-package org)
 (use-package ox-reveal)
 (use-package prettier-js
   :hook
