@@ -57,6 +57,10 @@
               (counsel--elisp-to-pcre
                (ivy--regex input t))))))
 
+(use-package counsel-projectile
+  :bind*
+  (("M-j f" . counsel-projectile-find-file)
+   ("M-j s" . counsel-projectile-rg)))
 (use-package dap-mode)
 (use-package eslintd-fix
   :hook ((web-mode . eslintd-fix-mode)))
